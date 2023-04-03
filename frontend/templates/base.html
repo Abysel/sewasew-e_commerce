@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Fonts and icons -->
+    <script src="https://kit.fontawesome.com/3ac3d49da2.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/3ac3d49da2.js" crossorigin="anonymous"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="base.css">
+
+    <title>Document</title>
+  
+
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="asset/pic/logo .png" ">
+
+    
+        <nav>
+            <ul class=" nav_links">
+        <li><a class="nav active" href="#">Home</a></li>
+        <li><a class="nav " href="#">Store</a></li>
+        <li><a class="nav" href="#">About</a></li>
+        <li><a class="nav" href="#">Blog</a></li>
+        <li><a class="nav" href="#">Contact</a></li>
+        </ul>
+        </nav>
+
+
+        <div class="corner_header">
+            <input type="checkbox" id="check" style="display: none;">
+            <div class="search_box">
+                <input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Search..">
+                <label for="check" class="search_icon">
+                    <i class="fa-solid fa-magnifying-glass" style="font-weight: 700; "></i>
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
+            </div>
+            <a class="cart" href="#"> <i class="fa-solid fa-cart-shopping"></i>
+                <span>0</span></a>
+            <a class="signup" href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+
+    </header>
+    <div id="main">
+        {% block main %}
+        
+        {% endblock main %}
+    </div>
+    <footer>
+        <div id="footer_info">
+            <img src="asset/pic/logo (2).png" alt="sewasew" srcset="">
+            <div class="mid_footer">
+                <a href="#">STORE LOCATOR</a>
+                <a href="#">OPENING HOURS</a>
+                <a href="#">PRIVACY POLICY</a>
+                <a href="#">FQ</a>
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                <a href=""><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+        <div id="copy_right">
+            <p> Copyright &#169; 2023 &bull; Sewasew Design & Apparels | Design by Abyselom-Tibebe</p>
+        </div>
+    </footer>
+
+
+    <script>
+        const nav_links = document.querySelectorAll(".nav")
+
+        for (const nav of nav_links) {
+            nav.addEventListener("click", function (e) {
+                console.log(e);
+                const navs = document.querySelectorAll(".nav");
+                for (const nav of navs) {
+                    if (nav.classList.contains("active")) {
+                        nav.classList.remove("active");
+                    }
+                }
+                e.target.classList.add("active");
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
