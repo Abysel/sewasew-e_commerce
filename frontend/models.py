@@ -27,7 +27,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     add_by = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
-    image = models.ImageField(upload_to='frontend/uploads/products')
+    image = models.ImageField(
+        upload_to='uploads/products', default="uploads/logo (2).png")
     slug = models.SlugField(max_length=225)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)

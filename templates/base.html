@@ -37,7 +37,7 @@
                     <a class="select" href="#" style="width: 127px;">Category<div class="arrow"></div>
                     </a>
                     <ul class="menu">
-                        <li class="sub active_category"> <a href="#">All</a></li>
+                        <li class="sub active_category"> <a href="{% url 'frontend:product_all'%}" >All</a></li>
                         
                             {% for category in catagories%}
                                 <li class="sub"> <a href="{{ category.get_absolute_url }}">{{category.name|title}}</a></li>
