@@ -5,56 +5,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Fonts and icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/3ac3d49da2.js" crossorigin="anonymous"></script>
+    <!-- style -->
     <style>
         * {
-            padding: 0;
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'lato', sans-serif;
+
         }
 
-        body {
+        .card-body a {
+            text-decoration: none;
+            color: #000;
+
+        }
+
+        .row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+
         }
 
-        #show {
-            background-color: antiquewhite;
-            padding: 20px;
-            border-radius: 25px;
+        .col-1 {
+            padding: 0 10px;
         }
 
-        img {
-            max-width: 300px;
+        .card-body {
+            padding: 10px 0px 10px 7px;
+            border: 1px solid #767676;
         }
 
-        .showoff {
-            display: flex;
-            justify-content: right;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-items: flex-end;
-            padding: 0 20px;
+
+
+        .fs-xs {
+            font-size: .875rem;
+            font-family: 'Jost', sans-serif;
         }
 
-        h2,
-        p {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        .fw-bold {
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(31, 31, 31, 1);
+            font-family: 'Jost', sans-serif;
+        }
+
+        .text-muted {
+            color: #767676 !important;
         }
     </style>
+
+    <!--script-->
+
     <title>Document</title>
+
+
 </head>
 
 <body>
-    <div id="show">
-        <img src="frontend/uploads/products/photo_2021-12-20_10-51-59.jpg" alt="">
-        <div class="showoff">
-            <h2>Title</h2>
-            <p>243</p>
+    <div class="content">
+        <div class="fl-vx">
+            Category:T-shirt
         </div>
+        <div class="cat_cloths">
+            <div class="col-1">
+                <div class="card-img">
+                    <a href="{{ product.get_absolute_url }}" class="card-img-link"><img
+                            src="frontend/uploads/products/photo_2021-12-20_10-51-59_Tyu6DG4.jpg"
+                            style="width: 300px; height:300px; " alt=""></a>
 
+                </div>
+                <div class="card-body">
+
+                    <div class="fw-bold">
+                        <a href="{{product.get_absolute_url}}">title</a>
+                    </div>
+                    <div class="fw-bold text-muted">$45</div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 </body>
 

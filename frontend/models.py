@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -15,6 +16,9 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("frontend:category_list", args=[self.slug])
 
 
 class Product(models.Model):
@@ -48,6 +52,9 @@ class Product(models.Model):
             return Product.objects.filter(add_by=adder)
         else:
             return Product.get_all_products
+
+    def get_absolute_url(self):
+        return reverse("frontend:product_detail", args=[self.slug])
 
 
 class Customer(models.Model):

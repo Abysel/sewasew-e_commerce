@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends '../base.html' %}
 {% load static %}
 {% block styleandlink %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,8 +7,10 @@
 <style>
     #main {
         display: flex;
-        justify-content: center;
         height: 100vh;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
     }
 
     #center {
@@ -38,7 +40,7 @@
     .card-body {
         padding: 10px 0px 10px 7px;
         border: 1px solid #767676;
-        border-top:none;
+        border-top: none;
     }
 
 
@@ -62,38 +64,28 @@
 </style>
 {% endblock styleandlink %}
 
-{% block Category_menu %}
-
-
-
-{% endblock Category_menu %}
 
 {% block main %}
-<div id="center">
-    <h1 style="font-weight:600;    font-weight: 600;
-    margin: 70px 0;
-    text-align: center;">Products</h1>
-    <div class="row">
-        {% for product in products %}
-        <div class="col-1">
-            <div class="card-img">
-                <a href="{{ product.get_absolute_url }}" class="card-img-link"><img src="{{product.image.url}}"
-                        style="width: 300px; height:300px; " alt=""></a>
+<h1 style="font-weight:600; font-weight: 600; margin: 70px 0; text-align: center;">
+    Category: {{category.name|title}}
+</h1>
+<div class="row">
+    {% for product in products_in_category %}
+    <div class="col-1">
+        <div class="card-img">
+            <a href="{{product.get_absolute_url}}" class="card-img-link"><img src="{{product.image.url}}" style="width: 300px; height:300px; "
+                    alt=""></a>
 
-            </div>
-            <div class="card-body">
-                <div class="fs-xs">
-                    <a class="text-muted" href="#">{{product.category|title}}</a>
-                </div>
-                <div class="fw-bold">
-                    <a href="{{product.get_absolute_url}}">{{product.name|title}}</a>
-                </div>
-                <div class="fw-bold text-muted">${{product.price |title}}</div>
-            </div>
         </div>
-        {% endfor %}
-
+        <div class="card-body">
+            <div class="fw-bold">
+                <a href="{{product.get_absolute_url}}">{{product.name|title}}</a>
+            </div>
+            <div class="fw-bold text-muted">${{product.price |title}}</div>
+        </div>
     </div>
+    {% endfor %}
+
 </div>
 
 {% endblock main %}

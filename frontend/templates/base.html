@@ -6,34 +6,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!--Fonts and icons -->
     <script src="https://kit.fontawesome.com/3ac3d49da2.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-
     <script src="https://kit.fontawesome.com/3ac3d49da2.js" crossorigin="anonymous"></script>
     <!-- style -->
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href=" {% static 'css/base_style.css' %}">
 
+    <!--script-->
+    {% block styleandlink %}
+
+    {% endblock styleandlink %}
     <title>Document</title>
-  
+
 
 </head>
 
 <body>
     <header>
-        <img class="logo" src="asset/pic/logo .png" ">
+        <a href="/"> <img class="logo" src="{% static 'assets/logo .png' %}"></a>
 
-    
+
         <nav>
             <ul class=" nav_links">
-        <li><a class="nav active" href="#">Home</a></li>
-        <li><a class="nav " href="#">Store</a></li>
-        <li><a class="nav" href="#">About</a></li>
-        <li><a class="nav" href="#">Blog</a></li>
-        <li><a class="nav" href="#">Contact</a></li>
-        </ul>
+                <li class="main_li active"><a class="nav " href="#">New</a></li>
+                <li class="main_li dropdown">
+                    <a class="select" href="#" style="width: 127px;">Category<div class="arrow"></div>
+                    </a>
+                    <ul class="menu">
+                        <li class="sub active_category"> <a href="#">All</a></li>
+                        
+                            {% for category in catagories%}
+                                <li class="sub"> <a href="{{ category.get_absolute_url }}">{{category.name|title}}</a></li>
+                            {% endfor %}
+                        
+
+                    </ul>
+
+                </li>
+                <li class="main_li"><a class="nav" href="#">About</a></li>
+                <li class="main_li"><a class="nav" href="#">Blog</a></li>
+                <li class="main_li"><a class="nav" href="#">Contact</a></li>
+
+            </ul>
         </nav>
 
 
@@ -53,13 +71,14 @@
 
     </header>
     <div id="main">
+
         {% block main %}
-        
+
         {% endblock main %}
     </div>
     <footer>
         <div id="footer_info">
-            <img src="asset/pic/logo (2).png" alt="sewasew" srcset="">
+            <img src="{% static 'assets/logo (2).png' %}" alt="sewasew" srcset="">
             <div class="mid_footer">
                 <a href="#">STORE LOCATOR</a>
                 <a href="#">OPENING HOURS</a>
@@ -78,25 +97,7 @@
     </footer>
 
 
-    <script>
-        const nav_links = document.querySelectorAll(".nav")
-
-        for (const nav of nav_links) {
-            nav.addEventListener("click", function (e) {
-                console.log(e);
-                const navs = document.querySelectorAll(".nav");
-                for (const nav of navs) {
-                    if (nav.classList.contains("active")) {
-                        nav.classList.remove("active");
-                    }
-                }
-                e.target.classList.add("active");
-
-            });
-
-        }
-
-    </script>
+    <script src="{%static 'js/base_js.js'%}"></script>
 
 </body>
 
